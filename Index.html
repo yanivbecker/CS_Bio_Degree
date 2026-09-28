@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four-year roadmap: Computer Science & Biology, pre-med</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F6F7;
+    --ink:#18212E;
+    --muted:#5B6878;
+    --rule:#D5DDE3;
+    --cs:#3446C4;
+    --bio:#23835A;
+    --sci:#B7791F;
+    --pre:#B8336A;
+    --gen:#5E6E82;
+    --coop:#0E7490;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 24px 80px}
+  header{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;padding-bottom:32px;border-bottom:2px solid var(--ink)}
+  h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.02;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:14px 0 0;max-width:56ch}
+  .progress{justify-self:end;width:100%;max-width:360px}
+  .progress .num{font-size:2.6rem;font-weight:800;line-height:1}
+  .progress .num small{font-size:1rem;font-weight:500;color:var(--muted)}
+  .bar{height:10px;background:var(--rule);border-radius:5px;margin:10px 0 6px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .4s ease}
+  .progress p{margin:0;font-size:.9rem;color:var(--muted)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:24px 0 8px;font-size:.9rem}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend b{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .hint{font-size:.88rem;color:var(--muted);margin:0 0 28px}
+
+  .year{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--rule)}
+  .ylabel h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.9rem;margin:0;line-height:1}
+  .ylabel p{margin:6px 0 0;font-size:.88rem;color:var(--muted)}
+  .terms{display:grid;grid-template-columns:1.25fr 1.25fr 1fr 1fr;gap:14px}
+  .term{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:120px}
+  .term.coop{background:repeating-linear-gradient(135deg,#E6F3F6,#E6F3F6 10px,#DCEEF2 10px,#DCEEF2 20px);border-color:#B5DCE5}
+  .term.off{background:transparent;border-style:dashed}
+  .term.now{outline:2px solid var(--ink);outline-offset:2px}
+  .thead{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .thead h3{margin:0;font-size:.98rem;font-weight:700}
+  .thead .sh{font-size:.85rem;color:var(--muted);white-space:nowrap}
+  .where{font-size:.78rem;color:var(--muted);margin-top:-6px}
+  .course{all:unset;cursor:pointer;display:block;border-left:4px solid var(--c);background:color-mix(in srgb,var(--c) 7%,#fff);padding:7px 9px;border-radius:0 6px 6px 0;font-size:.86rem;line-height:1.3}
+  .course:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .course .code{font-weight:700;display:flex;justify-content:space-between;gap:6px}
+  .course .code em{font-style:normal;font-weight:500;color:var(--muted)}
+  .course .name{color:#35404F}
+  .course .flag{display:block;margin-top:3px;font-size:.76rem;color:var(--pre);font-weight:600}
+  .course.done{opacity:.55}
+  .course.done .code span::before{content:"✓ ";color:var(--bio)}
+  .note{font-size:.84rem;color:var(--muted);margin:0}
+  .coop .note{color:#0B5566;font-weight:600}
+
+  .ms{margin-top:56px;display:grid;grid-template-columns:130px 1fr;gap:24px}
+  .ms h2,.checks h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.9rem;margin:0;line-height:1}
+  .timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
+  .timeline li{position:relative;padding:0 0 22px 24px;max-width:72ch}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+  .timeline li.key::before{background:var(--pre);border-color:var(--pre)}
+  .timeline time{font-weight:700;display:block}
+  .timeline p{margin:2px 0 0;color:#35404F}
+
+  .checks{margin-top:48px;display:grid;grid-template-columns:130px 1fr;gap:24px}
+  .checks ol{margin:0;padding-left:20px;max-width:74ch}
+  .checks li{margin-bottom:12px}
+  .checks li strong{display:block}
+  footer{margin-top:48px;font-size:.84rem;color:var(--muted);max-width:80ch}
+  footer a{color:inherit}
+
+  @media (max-width:980px){
+    header{grid-template-columns:1fr}
+    .progress{justify-self:start}
+    .terms{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .year,.ms,.checks{grid-template-columns:1fr;gap:12px}
+    .terms{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Computer Science & Biology, with pre-med, in four years</h1>
+      <p class="sub">One more semester in Oakland, then Boston. One co-op (January–June 2029), MCAT in late summer 2029, and a medical school application in June 2030.</p>
+    </div>
+    <div class="progress" aria-live="polite">
+      <div class="num"><span id="doneSH">0</span> <small>of <span id="totalSH">0</span> planned SH done</small></div>
+      <div class="bar"><i id="barFill"></i></div>
+      <p>141 SH required to graduate. This plan carries a small buffer.</p>
+    </div>
+  </header>
+
+  <div class="legend" aria-label="Color key">
+    <span><b style="background:var(--cs)"></b>Computer science</span>
+    <span><b style="background:var(--bio)"></b>Biology</span>
+    <span><b style="background:var(--sci)"></b>Chemistry & math (major)</span>
+    <span><b style="background:var(--pre)"></b>Pre-med extras (use general electives)</span>
+    <span><b style="background:var(--gen)"></b>Writing, social issues & electives</span>
+  </div>
+  <p class="hint">Click any course to mark it done. Progress resets when you close the page.</p>
+
+  <main id="plan"></main>
+
+  <section class="ms" aria-labelledby="ms-h">
+    <h2 id="ms-h">Pre-med milestones</h2>
+    <ol class="timeline">
+      <li><time>Fall 2026 (now)</time><p>Register with PreMed and PreHealth Advising and create your Medical Applicant Portal (MAP) profile. Book meetings with your Khoury advisor about the items in the checklist below.</p></li>
+      <li><time>Spring 2027</time><p>Start steady clinical volunteering in the Bay Area. Consistency over time matters more than total hours.</p></li>
+      <li><time>Fall 2027</time><p>Arrive in Boston. Look for a research lab (computational biology is a natural fit) and start shadowing physicians.</p></li>
+      <li><time>Fall 2028</time><p>Co-op search. Target clinical research, hospital data science, or health-tech roles so the co-op doubles as medical-school experience.</p></li>
+      <li class="key"><time>July–September 2029</time><p>MCAT study and test date. All the science it covers (both chemistries, physics, biochemistry, psychology, sociology) is finished by December 2028.</p></li>
+      <li><time>Fall 2029 – Spring 2030</time><p>Collect recommendation letters and complete Northeastern's committee letter process. Write your personal statement.</p></li>
+      <li class="key"><time>June 2030</time><p>Graduate and submit your primary application early in the cycle. Gap year while interviewing, matriculating in fall 2031.</p></li>
+    </ol>
+  </section>
+
+  <section class="checks" aria-labelledby="ck-h">
+    <h2 id="ck-h">Confirm with your advisor</h2>
+    <ol>
+      <li><strong>Does CS 1800 substitute for MATH 1365?</strong>If not, take MATH 1365 in place of the spring 2030 general elective. The plan still graduates on time.</li>
+      <li><strong>CS 2000 placement.</strong>Since you went straight to CS 2100, the plan includes one extra 3000-level CS course (fall 2029) as the substitute the catalog requires.</li>
+      <li><strong>BIOL 1111 after moving to Boston.</strong>The Boston version of this major lists only BIOL 1107/1108 for intro biology. Make sure BIOL 1111/1112 carries over when your program switches campuses.</li>
+      <li><strong>Summer 2027 in Boston.</strong>Check whether you can start in Boston in Summer 1. If not, shift MATH 1341 and PSYC 1101 into fall 2027 and move CS 1210 to spring 2028.</li>
+      <li><strong>Second semester of biology for medical schools.</strong>Genetics with lab (BIOL 2301/2302) usually counts. If a school on your list wants General Biology 2, swap BIOL 1113/1114 into the spring 2030 elective slot.</li>
+      <li><strong>Prerequisites and offerings.</strong>This plan is built from the 2026–27 catalog and last year's Oakland schedule. Verify each term in the registration system before you register.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Unofficial plan based on the Northeastern 2026–27 catalog for Computer Science and Biology, BS (Oakland and Boston), the PreMed and PreHealth Advising common coursework list, and the Oakland campus course offerings guide. Your official audit in DegreeWorks and your advisors have the final word.
+  </footer>
+</div>
+
+<script>
+const T = {cs:"var(--cs)", bio:"var(--bio)", sci:"var(--sci)", pre:"var(--pre)", gen:"var(--gen)"};
+const plan = [
+  {year:"Year 1", sub:"2026–27", terms:[
+    {name:"Fall 2026", where:"Oakland, in progress", now:true, courses:[
+      ["BIOL 1111/1112","General Biology 1 + lab",5,"bio"],
+      ["CS 2100/2101","Program Design & Implementation 1 + lab",5,"cs"],
+      ["CS 1800/1802","Discrete Structures + seminar",5,"cs","Confirm it substitutes for MATH 1365"],
+      ["ENGW 1111","First-Year Writing",4,"gen"],
+      ["INPR 1000","First-Year Interdisciplinary Seminar",1,"cs"]]},
+    {name:"Spring 2027", where:"Oakland", courses:[
+      ["CHEM 1161/1162/1163","General Chemistry + lab + recitation",5,"sci"],
+      ["CS 3100/3101","Program Design & Implementation 2 + lab",5,"cs"],
+      ["BIOL 2299","Inquiries in Biological Sciences",4,"bio"],
+      ["PHIL 1145","Technology and Human Values (computing & social issues)",4,"gen"]]},
+    {name:"Summer 1 2027", where:"Boston", courses:[
+      ["MATH 1341","Calculus 1 for Science & Engineering",4,"sci"],
+      ["PSYC 1101","Foundations of Psychology",4,"pre"]]},
+    {name:"Summer 2 2027", off:true, note:"Break. Keep up clinical volunteering or shadowing."}
+  ]},
+  {year:"Year 2", sub:"2027–28", terms:[
+    {name:"Fall 2027", where:"Boston", courses:[
+      ["CHEM 2311/2312","Organic Chemistry 1 + lab",5,"sci"],
+      ["BIOL 2301/2302","Genetics & Molecular Biology + lab",5,"bio"],
+      ["CS 2700/2701","Data Structures & Analysis + lab",5,"cs"],
+      ["CS 1210","Professional Development for Co-op",1,"cs"]]},
+    {name:"Spring 2028", where:"Boston", courses:[
+      ["CHEM 2313/2314","Organic Chemistry 2 + lab",5,"sci"],
+      ["CS 3000","Algorithms and Data",4,"cs"],
+      ["ENVR 2500/2501","Biostatistics + lab",5,"sci"],
+      ["BIOL 2309 or 2407","Biology Project Lab or Computational Project Lab",4,"bio"]]},
+    {name:"Summer 1 2028", where:"Boston", courses:[
+      ["PHYS 1145/1146","Physics for Life Sciences 1 + lab",5,"pre"],
+      ["SOCL 1101","Introduction to Sociology",4,"pre"]]},
+    {name:"Summer 2 2028", where:"Boston", courses:[
+      ["PHYS 1147/1148","Physics for Life Sciences 2 + lab",5,"pre"]]}
+  ]},
+  {year:"Year 3", sub:"2028–29", terms:[
+    {name:"Fall 2028", where:"Boston", courses:[
+      ["BIOL 3611/3612","Biochemistry + lab",5,"bio"],
+      ["CS 3200","Introduction to Databases",4,"cs"],
+      ["ENGW 3307","Advanced Writing in the Sciences",4,"gen"],
+      ["Organismal elective","e.g. Human Parasitology or Intro to Evolution",4,"bio"]]},
+    {name:"Spring 2029", coop:true, note:"Co-op, January–June. Aim for clinical research or health-tech."},
+    {name:"Summer 1 2029", coop:true, note:"Co-op continues."},
+    {name:"Summer 2 2029", where:"Boston, light load", courses:[
+      ["Khoury elective","Any CS 2300+, CY 2000+, or DS 2500+",4,"cs"]],
+      note:"MCAT study, test in late August or September."}
+  ]},
+  {year:"Year 4", sub:"2029–30", terms:[
+    {name:"Fall 2029", where:"Boston", courses:[
+      ["CS 4530","Fundamentals of Software Engineering",4,"cs"],
+      ["CS 3000+ course","Substitute for CS 2000 (placement)",4,"cs"],
+      ["Int./adv. biology elective","BIOL 2311–4999",4,"bio"],
+      ["Int./adv. science","e.g. PSYC 3458 Biological Psychology (MCAT-relevant)",4,"sci"]]},
+    {name:"Spring 2030", where:"Boston", courses:[
+      ["BIOL 4701","Biology Capstone",4,"bio"],
+      ["BIOL 4707","Cell & Molecular Biology (integrative)",4,"bio"],
+      ["General elective","Open slot; use for MATH 1365 if CS 1800 isn't approved",4,"gen"]]},
+    {name:"Summer 2030", off:true, note:"Graduated. Submit medical school applications in June."},
+    {name:"", hidden:true}
+  ]}
+];
+
+const done = new Set();
+let total = 0;
+const main = document.getElementById("plan");
+
+plan.forEach((y, yi) => {
+  const row = document.createElement("section");
+  row.className = "year";
+  row.innerHTML = `<div class="ylabel"><h2>${y.year}</h2><p>${y.sub}</p></div>`;
+  const grid = document.createElement("div");
+  grid.className = "terms";
+  y.terms.forEach((t, ti) => {
+    const el = document.createElement("div");
+    if (t.hidden) { el.setAttribute("aria-hidden","true"); grid.appendChild(el); return; }
+    el.className = "term" + (t.coop ? " coop" : "") + (t.off ? " off" : "") + (t.now ? " now" : "");
+    const sh = (t.courses || []).reduce((s, c) => s + c[2], 0);
+    total += sh;
+    el.innerHTML = `<div class="thead"><h3>${t.name}</h3><span class="sh">${t.coop ? "Co-op" : sh ? sh + " SH" : ""}</span></div>` +
+      (t.where ? `<div class="where">${t.where}</div>` : "");
+    (t.courses || []).forEach((c, ci) => {
+      const id = `${yi}-${ti}-${ci}`;
+      const b = document.createElement("button");
+      b.className = "course";
+      b.style.setProperty("--c", T[c[3]]);
+      b.setAttribute("aria-pressed", "false");
+      b.innerHTML = `<span class="code"><span>${c[0]}</span><em>${c[2]}</em></span><span class="name">${c[1]}</span>` +
+        (c[4] ? `<span class="flag">${c[4]}</span>` : "");
+      b.addEventListener("click", () => {
+        if (done.has(id)) done.delete(id); else done.add(id);
+        const on = done.has(id);
+        b.classList.toggle("done", on);
+        b.setAttribute("aria-pressed", String(on));
+        update();
+      });
+      b.dataset.sh = c[2];
+      b.dataset.id = id;
+      el.appendChild(b);
+    });
+    if (t.note) { const p = document.createElement("p"); p.className = "note"; p.textContent = t.note; el.appendChild(p); }
+    grid.appendChild(el);
+  });
+  row.appendChild(grid);
+  main.appendChild(row);
+});
+
+document.getElementById("totalSH").textContent = total;
+function update(){
+  let s = 0;
+  document.querySelectorAll(".course.done").forEach(b => s += +b.dataset.sh);
+  document.getElementById("doneSH").textContent = s;
+  document.getElementById("barFill").style.width = (s / total * 100) + "%";
+}
+</script>
+</body>
+</html>
