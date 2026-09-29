@@ -92,7 +92,7 @@
   <header>
     <div>
       <h1>Computer Science & Biology, with pre-med, in four years</h1>
-      <p class="sub">One more semester in Oakland, then Boston. One co-op (January–June 2029), MCAT in late summer 2029, and a medical school application in June 2030.</p>
+      <p class="sub">One more semester in Oakland, then Boston. One co-op (January–June 2029), MCAT in late summer 2029, and a medical school application in June 2030, with room for lighting and scuba along the way.</p>
     </div>
     <div class="progress" aria-live="polite">
       <div class="num"><span id="doneSH">0</span> <small>of <span id="totalSH">0</span> planned SH done</small></div>
@@ -128,11 +128,12 @@
   <section class="checks" aria-labelledby="ck-h">
     <h2 id="ck-h">Confirm with your advisor</h2>
     <ol>
-      <li><strong>Does CS 1800 substitute for MATH 1365?</strong>If not, take MATH 1365 in place of the spring 2030 general elective. The plan still graduates on time.</li>
+      <li><strong>Does CS 1800 substitute for MATH 1365?</strong>If not, add MATH 1365 to spring 2030 alongside Lighting Design (16 SH). The plan still graduates on time.</li>
       <li><strong>CS 2000 placement.</strong>Since you went straight to CS 2100, the plan includes one extra 3000-level CS course (fall 2029) as the substitute the catalog requires.</li>
       <li><strong>BIOL 1111 after moving to Boston.</strong>The Boston version of this major lists only BIOL 1107/1108 for intro biology. Make sure BIOL 1111/1112 carries over when your program switches campuses.</li>
-      <li><strong>Summer 2027 in Boston.</strong>Check whether you can start in Boston in Summer 1. If not, shift MATH 1341 and PSYC 1101 into fall 2027 and move CS 1210 to spring 2028.</li>
-      <li><strong>Second semester of biology for medical schools.</strong>Genetics with lab (BIOL 2301/2302) usually counts. If a school on your list wants General Biology 2, swap BIOL 1113/1114 into the spring 2030 elective slot.</li>
+      <li><strong>Summer 2027 in Boston.</strong>Check whether you can start in Boston in Summer 1. If not, take MATH 1341 and PSYC 1101 in fall 2027 and move scuba and the production course to a later term so fall stays manageable.</li>
+      <li><strong>Second semester of biology for medical schools.</strong>Genetics with lab (BIOL 2301/2302) usually counts. If a school on your list wants General Biology 2, add BIOL 1113/1114 to a lighter term such as spring 2030 or a summer session.</li>
+      <li><strong>Theatre and diving courses.</strong>Ask the theatre department whether your lighting experience satisfies any prerequisite for THTR 2370. EEMB 1145 requires a lab fee, and diving typically needs a medical screening.</li>
       <li><strong>Prerequisites and offerings.</strong>This plan is built from the 2026–27 catalog and last year's Oakland schedule. Verify each term in the registration system before you register.</li>
     </ol>
   </section>
@@ -167,7 +168,9 @@ const plan = [
       ["CHEM 2311/2312","Organic Chemistry 1 + lab",5,"sci"],
       ["BIOL 2301/2302","Genetics & Molecular Biology + lab",5,"bio"],
       ["CS 2700/2701","Data Structures & Analysis + lab",5,"cs"],
-      ["CS 1210","Professional Development for Co-op",1,"cs"]]},
+      ["CS 1210","Professional Development for Co-op",1,"cs"],
+      ["THTR 1100","Production Experience 1 (run lights on a department show)",1,"gen"],
+      ["EEMB 1145","Scuba diving",1,"gen","Confirm credit hours, lab fee, and dive medical"]]},
     {name:"Spring 2028", where:"Boston", courses:[
       ["CHEM 2313/2314","Organic Chemistry 2 + lab",5,"sci"],
       ["CS 3000","Algorithms and Data",4,"cs"],
@@ -184,7 +187,7 @@ const plan = [
       ["BIOL 3611/3612","Biochemistry + lab",5,"bio"],
       ["CS 3200","Introduction to Databases",4,"cs"],
       ["ENGW 3307","Advanced Writing in the Sciences",4,"gen"],
-      ["Organismal elective","e.g. Human Parasitology or Intro to Evolution",4,"bio"]]},
+      ["EEMB 2700/2701","Marine Biology + lab (organismal elective)",5,"bio"]]},
     {name:"Spring 2029", coop:true, note:"Co-op, January–June. Aim for clinical research or health-tech."},
     {name:"Summer 1 2029", coop:true, note:"Co-op continues."},
     {name:"Summer 2 2029", where:"Boston, light load", courses:[
@@ -200,7 +203,7 @@ const plan = [
     {name:"Spring 2030", where:"Boston", courses:[
       ["BIOL 4701","Biology Capstone",4,"bio"],
       ["BIOL 4707","Cell & Molecular Biology (integrative)",4,"bio"],
-      ["General elective","Open slot; use for MATH 1365 if CS 1800 isn't approved",4,"gen"]]},
+      ["THTR 2370","Lighting Design (general elective)",4,"gen","If MATH 1365 is needed, add it here too (16 SH)"]]},
     {name:"Summer 2030", off:true, note:"Graduated. Submit medical school applications in June."},
     {name:"", hidden:true}
   ]}
