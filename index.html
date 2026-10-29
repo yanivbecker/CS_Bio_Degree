@@ -55,6 +55,7 @@
   .course .name{color:#35404F}
   .course .flag{display:block;margin-top:3px;font-size:.76rem;color:var(--pre);font-weight:600}
   .course.done{opacity:.55}
+  .course.opt{border-left-style:dashed;background:transparent;outline:1px dashed var(--rule)}
   .course.done .code span::before{content:"✓ ";color:var(--bio)}
   .note{font-size:.84rem;color:var(--muted);margin:0}
   .coop .note{color:#0B5566;font-weight:600}
@@ -97,7 +98,7 @@
     <div class="progress" aria-live="polite">
       <div class="num"><span id="doneSH">0</span> <small>of <span id="totalSH">0</span> planned SH done</small></div>
       <div class="bar"><i id="barFill"></i></div>
-      <p>141 SH required to graduate. This plan carries a small buffer.</p>
+      <p>141 SH required to graduate. This plan runs above that, mostly from pre-med and personal electives.</p>
     </div>
   </header>
 
@@ -117,7 +118,7 @@
     <ol class="timeline">
       <li><time>Fall 2026 (now)</time><p>Register with PreMed and PreHealth Advising and create your Medical Applicant Portal (MAP) profile. Book meetings with your Khoury advisor about the items in the checklist below.</p></li>
       <li><time>Spring 2027</time><p>Start steady clinical volunteering in the Bay Area. Consistency over time matters more than total hours.</p></li>
-      <li><time>Fall 2027</time><p>Arrive in Boston. Look for a research lab (computational biology is a natural fit) and start shadowing physicians.</p></li>
+      <li><time>July 2027</time><p>Move to Boston for Summer 2 and stay through fall. Look for a research lab (computational biology is a natural fit) and start shadowing physicians.</p></li>
       <li><time>Fall 2028</time><p>Co-op search. Target clinical research, hospital data science, or health-tech roles so the co-op doubles as medical-school experience.</p></li>
       <li class="key"><time>July–September 2029</time><p>MCAT study and test date. All the science it covers (both chemistries, physics, biochemistry, psychology, sociology) is finished by December 2028.</p></li>
       <li><time>Fall 2029 – Spring 2030</time><p>Collect recommendation letters and complete Northeastern's committee letter process. Write your personal statement.</p></li>
@@ -128,13 +129,14 @@
   <section class="checks" aria-labelledby="ck-h">
     <h2 id="ck-h">Confirm with your advisor</h2>
     <ol>
-      <li><strong>Does CS 1800 substitute for MATH 1365?</strong>If not, add MATH 1365 to spring 2030 alongside Lighting Design (16 SH). The plan still graduates on time.</li>
-      <li><strong>CS 2000 placement.</strong>Since you went straight to CS 2100, the plan includes one extra 3000-level CS course (fall 2029) as the substitute the catalog requires.</li>
-      <li><strong>BIOL 1111 after moving to Boston.</strong>The Boston version of this major lists only BIOL 1107/1108 for intro biology. Make sure BIOL 1111/1112 carries over when your program switches campuses.</li>
-      <li><strong>Summer 2027 in Boston.</strong>Check whether you can start in Boston in Summer 1. If not, take MATH 1341 and PSYC 1101 in fall 2027 and move scuba and the production course to a later term so fall stays manageable.</li>
+      <li><strong>Settled with your advisor.</strong>CS 1800 counts as your Khoury elective, MATH 1365 is still required (now in spring 2030), general electives are 20 SH (this plan has about 29), and Calculus moves to spring 2027 in place of PHIL 1145. Make sure your audit reflects the CS 1800 change.</li>
+      <li><strong>CS 2000 placement.</strong>Since you went straight to CS 2100, the plan includes one extra 3000-level CS course (fall 2029) as the substitute. Your audit still lists CS 2000/2001, so ask your advisor to record the placement.</li>
+            <li><strong>Expected graduation date.</strong>Your audit shows April 30, 2031, the default five-year track. Ask to change it to spring 2030 so co-op timing and registration match this plan.</li>
+      <li><strong>BIOL 1111 after moving to Boston.</strong>Your audit already applies BIOL 1111/1112 to the Biology Core. Recheck it once your program switches to the Boston version.</li>
+      <li><strong>Summer 2 2027 in Boston.</strong>Confirm PSYC 1101 and PHIL 1145 (or DS 1300 / PHIL 1300) have Summer 2 sections, ask Housing whether you can move straight from summer housing into your fall assignment, and check how financial aid applies to Summer 2.</li>
       <li><strong>Second semester of biology for medical schools.</strong>Genetics with lab (BIOL 2301/2302) usually counts. If a school on your list wants General Biology 2, add BIOL 1113/1114 to a lighter term such as spring 2030 or a summer session.</li>
-      <li><strong>Theatre and diving courses.</strong>Ask the theatre department whether your lighting experience satisfies any prerequisite for THTR 2370. EEMB 1145 requires a lab fee, and diving typically needs a medical screening.</li>
-      <li><strong>Prerequisites and offerings.</strong>This plan is built from the 2026–27 catalog and last year's Oakland schedule. Verify each term in the registration system before you register.</li>
+      <li><strong>Theatre and diving courses.</strong>THTR 2370 has no prerequisites. EEMB 1145 (scuba) does not appear in the 2026–27 catalog, so check whether it was renumbered or dropped before counting on it.</li>
+      <li><strong>Prerequisites and offerings.</strong>Course order was checked against the 2026–27 catalog; the only two-semester sequences are Organic Chemistry and Physics, both in order. Biostatistics (ENVR 2500) prerequisites were not verified. Confirm offerings each term in the registration system.</li>
     </ol>
   </section>
 
@@ -150,18 +152,18 @@ const plan = [
     {name:"Fall 2026", where:"Oakland, in progress", now:true, courses:[
       ["BIOL 1111/1112","General Biology 1 + lab",5,"bio"],
       ["CS 2100/2101","Program Design & Implementation 1 + lab",5,"cs"],
-      ["CS 1800/1802","Discrete Structures + seminar",5,"cs","Confirm it substitutes for MATH 1365"],
+      ["CS 1800/1802","Discrete Structures + seminar",5,"cs","Advisor confirmed: counts as your Khoury elective, not MATH 1365"],
       ["ENGW 1111","First-Year Writing",4,"gen"],
       ["INPR 1000","First-Year Interdisciplinary Seminar",1,"cs"]]},
     {name:"Spring 2027", where:"Oakland", courses:[
       ["CHEM 1161/1162/1163","General Chemistry + lab + recitation",5,"sci"],
       ["CS 3100/3101","Program Design & Implementation 2 + lab",5,"cs"],
       ["BIOL 2299","Inquiries in Biological Sciences",4,"bio"],
-      ["PHIL 1145","Technology and Human Values (computing & social issues)",4,"gen"]]},
-    {name:"Summer 1 2027", where:"Boston", courses:[
-      ["MATH 1341","Calculus 1 for Science & Engineering",4,"sci"],
-      ["PSYC 1101","Foundations of Psychology",4,"pre"]]},
-    {name:"Summer 2 2027", off:true, note:"Break. Keep up clinical volunteering or shadowing."}
+      ["MATH 1341","Calculus 1 for Science & Engineering",4,"sci","Advisor's suggestion. Confirm an Oakland spring section."]]},
+    {name:"Summer 1 2027", off:true, note:"Free. Clinical volunteering, a job, or shadowing in the Bay Area."},
+    {name:"Summer 2 2027", where:"Boston, move in and stay through fall", courses:[
+      ["PSYC 1101","Foundations of Psychology",4,"pre"],
+      ["PHIL 1145","Technology and Human Values (computing & social issues)",4,"gen","Or DS 1300 / PHIL 1300 if not offered"]]}
   ]},
   {year:"Year 2", sub:"2027–28", terms:[
     {name:"Fall 2027", where:"Boston", courses:[
@@ -170,17 +172,18 @@ const plan = [
       ["CS 2700/2701","Data Structures & Analysis + lab",5,"cs"],
       ["CS 1210","Professional Development for Co-op",1,"cs"],
       ["THTR 1100","Production Experience 1 (run lights on a department show)",1,"gen"],
-      ["EEMB 1145","Scuba diving",1,"gen","Confirm credit hours, lab fee, and dive medical"]]},
+      ["EEMB 1145","Scuba diving",1,"gen","Not in the 2026–27 catalog. Check registration or the Marine Science Center."]]},
     {name:"Spring 2028", where:"Boston", courses:[
       ["CHEM 2313/2314","Organic Chemistry 2 + lab",5,"sci"],
-      ["CS 3000","Algorithms and Data",4,"cs"],
+      ["CS 3000/3001","Algorithms and Data + recitation (0 SH)",4,"cs"],
       ["ENVR 2500/2501","Biostatistics + lab",5,"sci"],
-      ["BIOL 2309 or 2407","Biology Project Lab or Computational Project Lab",4,"bio"]]},
+      ["BIOL 2309","Biology Project Lab (BIOL 2407 would need BIOL 2406 first)",4,"bio"]]},
     {name:"Summer 1 2028", where:"Boston", courses:[
       ["PHYS 1145/1146","Physics for Life Sciences 1 + lab",5,"pre"],
       ["SOCL 1101","Introduction to Sociology",4,"pre"]]},
     {name:"Summer 2 2028", where:"Boston", courses:[
-      ["PHYS 1147/1148","Physics for Life Sciences 2 + lab",5,"pre"]]}
+      ["PHYS 1147/1148","Physics for Life Sciences 2 + lab",5,"pre"],
+      ["THTR 1270","Intro to Theatrical Design (Interpreting Culture + Creative Expression)",4,"gen","Check that it is offered in summer"]]}
   ]},
   {year:"Year 3", sub:"2028–29", terms:[
     {name:"Fall 2028", where:"Boston", courses:[
@@ -190,20 +193,19 @@ const plan = [
       ["EEMB 2700/2701","Marine Biology + lab (organismal elective)",5,"bio"]]},
     {name:"Spring 2029", coop:true, note:"Co-op, January–June. Aim for clinical research or health-tech."},
     {name:"Summer 1 2029", coop:true, note:"Co-op continues."},
-    {name:"Summer 2 2029", where:"Boston, light load", courses:[
-      ["Khoury elective","Any CS 2300+, CY 2000+, or DS 2500+",4,"cs"]],
-      note:"MCAT study, test in late August or September."}
+    {name:"Summer 2 2029", off:true, note:"No classes. Full-time MCAT study, test in late August or September."}
   ]},
   {year:"Year 4", sub:"2029–30", terms:[
     {name:"Fall 2029", where:"Boston", courses:[
       ["CS 4530","Fundamentals of Software Engineering",4,"cs"],
       ["CS 3000+ course","Substitute for CS 2000 (placement)",4,"cs"],
       ["Int./adv. biology elective","BIOL 2311–4999",4,"bio"],
-      ["Int./adv. science","e.g. PSYC 3458 Biological Psychology (MCAT-relevant)",4,"sci"]]},
+      ["Int./adv. science","e.g. PSYC 3458 Biological Psychology (MCAT-relevant)",4,"sci","Or CHEM 2321 Analytical Chemistry if a med school wants two semesters of general chemistry"]]},
     {name:"Spring 2030", where:"Boston", courses:[
       ["BIOL 4701","Biology Capstone",4,"bio"],
       ["BIOL 4707","Cell & Molecular Biology (integrative)",4,"bio"],
-      ["THTR 2370","Lighting Design (general elective)",4,"gen","If MATH 1365 is needed, add it here too (16 SH)"]]},
+      ["THTR 2370","Lighting Design (general elective)",4,"gen"],
+      ["MATH 1365","Intro to Mathematical Reasoning (Discrete Structures requirement)",4,"sci","Required: advisor confirmed CS 1800 doesn't replace it"]]},
     {name:"Summer 2030", off:true, note:"Graduated. Submit medical school applications in June."},
     {name:"", hidden:true}
   ]}
@@ -223,14 +225,14 @@ plan.forEach((y, yi) => {
     const el = document.createElement("div");
     if (t.hidden) { el.setAttribute("aria-hidden","true"); grid.appendChild(el); return; }
     el.className = "term" + (t.coop ? " coop" : "") + (t.off ? " off" : "") + (t.now ? " now" : "");
-    const sh = (t.courses || []).reduce((s, c) => s + c[2], 0);
+    const sh = (t.courses || []).reduce((s, c) => s + (c[5] ? 0 : c[2]), 0);
     total += sh;
     el.innerHTML = `<div class="thead"><h3>${t.name}</h3><span class="sh">${t.coop ? "Co-op" : sh ? sh + " SH" : ""}</span></div>` +
       (t.where ? `<div class="where">${t.where}</div>` : "");
     (t.courses || []).forEach((c, ci) => {
       const id = `${yi}-${ti}-${ci}`;
       const b = document.createElement("button");
-      b.className = "course";
+      b.className = "course" + (c[5] ? " opt" : "");
       b.style.setProperty("--c", T[c[3]]);
       b.setAttribute("aria-pressed", "false");
       b.innerHTML = `<span class="code"><span>${c[0]}</span><em>${c[2]}</em></span><span class="name">${c[1]}</span>` +
